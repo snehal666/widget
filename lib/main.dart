@@ -8,22 +8,28 @@ class MyApp extends StatefulWidget {
     // TODO: implement createState
     return _myAppState();
   }
-
 }
-class _myAppState extends State<MyApp>{
+
+class _myAppState extends State<MyApp> {
   var _questionIndex = 0;
+  List<String> questions = [];
 
-  void answerQuestions()
-  {
+  void answerQuestions() {
     setState(() {
-      _questionIndex = _questionIndex + 1;
+      if (_questionIndex < 5) {
+        _questionIndex++;
+      } else {
+        print("Index Increased");}
     });
-
-    print(_questionIndex);
   }
+
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    questions = [
+      'What\'s your favt color ?',
+      'What\'s your favt animal ?',
+      'What\'s your favt color ?',
+      'What\'s your favt animal ?',
       'What\'s your favt color ?',
       'What\'s your favt animal ?',
     ];
@@ -32,17 +38,31 @@ class _myAppState extends State<MyApp>{
         appBar: AppBar(
           title: Text('My Second App'),
         ),
-        body:Column(
+        body: Column(
           children: [
-            Text(questions[_questionIndex]),
-            RaisedButton(child: Text('Answer 1'),onPressed: answerQuestions),
-            RaisedButton(child: Text('Answer 2'),
-              onPressed: () => print ('Answer 2 chosen!'),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.all(10),
+              child: Text(
+                questions[_questionIndex],
+                style: TextStyle(fontSize: 30),
+                textAlign: TextAlign.center,
+              ),
             ),
-            RaisedButton(child: Text('Answer 3'),onPressed: (){
-              //...
-              print('Answer 3 chosen');
-            },
+            RaisedButton(
+              child: Text('Answer 1'),
+              color: Colors.blue,
+              onPressed: answerQuestions,
+            ),
+            RaisedButton(
+              child: Text('Answer 2'),
+              onPressed: () => print('Answer 2 chosen!'),
+            ),
+            RaisedButton(
+              child: Text('Answer 3'),
+              onPressed: () {
+                print('Answer 3 chosen');
+              },
             ),
           ],
         ),
