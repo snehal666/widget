@@ -56,10 +56,12 @@ class _myAppState extends State<MyApp> {
             ),
             RaisedButton(
               child: Text('Answer 2'),
+              color: Colors.blue,
               onPressed: () => print('Answer 2 chosen!'),
             ),
             RaisedButton(
               child: Text('Answer 3'),
+              color: Colors.blue,
               onPressed: () {
                 print('Answer 3 chosen');
               },
